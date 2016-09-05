@@ -1,0 +1,10 @@
+# Virtual enviroments
+env/
+
+# Databases files
+db.sqlite3
+
+#Pycharm Stuff
+.idea/
+
+*.pyc
