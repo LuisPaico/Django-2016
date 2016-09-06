@@ -1,10 +1,14 @@
 from django.shortcuts import render
+from photos.models import Photo
 
-from django.http import HttpResponse
 
-# Create your views here.
+def home (request):
+    """
+    Renderiza el home con un listado de fotos
+    :param request: objeto HttpRequest con los datos de la petición
+    :return: objeto HttpResponse con los datos de la respuesta
+    """
 
-def hello(request):
-    nombre = request.GET.get('nombre')
-    apellido = request.GET.get('apellido')
-    return HttpResponse("Hello {0}, {1}".format(nombre, apellido))
+    photos = Photo.objects.all() # recupera todas las fotos de la base de datos
+    context = {'photos_list': photos}
+    return  render(request, 'photos/home.html', context)
